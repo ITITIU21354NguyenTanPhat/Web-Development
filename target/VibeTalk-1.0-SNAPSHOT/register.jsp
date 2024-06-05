@@ -3,6 +3,7 @@
 <head>
     <title>VibeTalk Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta type="text/html" charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap-grid.css">
@@ -18,7 +19,7 @@
         if(username != null && password != null)
         try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=UserDB; encrypt=true; trustServerCertificate=true; username=sa; password=nguyentritue;");
+            Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=WebDev; encrypt=true; trustServerCertificate=true; username=sa; password=nguyentritue;");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM userInfo WHERE account = '"+username+"';");
             if (rs.next()){
@@ -28,7 +29,7 @@
             }
             else{
                 stmt.executeUpdate("INSERT INTO userInfo VALUES('"+username+"', '"+password+"', '"+email+"', '"+phone+"')");
-                response.sendRedirect("homepage.jsp");
+                response.sendRedirect("home.jsp");
             }
             
             con.close();
@@ -49,7 +50,6 @@
                 </ul>
             </div>
         </div>
-
 
         <div class="container">
             <div class="row-3">
